@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A weather app built with HTML, CSS and JavaScript using the Open-Meteo API">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1 class="app-title">Weather App</h1>
+      <div class="header-actions">
+        <button type="button" id="unit-toggle" class="pill-btn" aria-label="Switch temperature unit">°C</button>
+        <button type="button" id="theme-toggle" class="pill-btn" aria-label="Switch theme">Dark mode</button>
+      </div>
+    </header>
+
+    <!-- Search -->
+    <form id="search-form" class="search-form">
+      <input
+        type="text"
+        id="city-input"
+        class="city-input"
+        placeholder="Search city (e.g. Dhaka)"
+        autocomplete="off"
+        maxlength="60"
+        aria-label="City name"
+      >
+      <button type="submit" id="search-btn" class="search-btn">Search</button>
+    </form>
+
+    <!-- Loading and error messages -->
+    <p id="loading" class="status loading" role="status" hidden>Loading weather...</p>
+    <p id="error-message" class="status error" role="alert" hidden></p>
+
+    <!-- Weather content (shown by JavaScript after a successful search) -->
+    <section id="weather-content" class="weather-content" hidden>
+
+      <!-- Current weather -->
+      <div class="current-card">
+        <div class="current-top">
+          <div>
+            <h2 id="city-name" class="city-name"></h2>
+            <p id="current-date" class="current-date"></p>
+          </div>
+          <span id="weather-icon" class="weather-icon" aria-hidden="true"></span>
+        </div>
+
+        <div class="current-main">
+          <p id="current-temp" class="current-temp">--</p>
+          <p id="weather-desc" class="weather-desc"></p>
+        </div>
+
+        <div class="details">
+          <div class="detail">
+            <span class="detail-label">Feels like</span>
+            <span id="feels-like" class="detail-value">--</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Humidity</span>
+            <span id="humidity" class="detail-value">--</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Wind</span>
+            <span id="wind-speed" class="detail-value">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-day forecast -->
+      <h3 class="section-title">5-Day Forecast</h3>
+      <ul id="forecast-list" class="forecast-list"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
