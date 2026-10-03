@@ -29,7 +29,15 @@
         aria-label="City name"
       >
       <button type="submit" id="search-btn" class="search-btn">Search</button>
+      <button type="button" id="locate-btn" class="locate-btn" aria-label="Use my current location" title="Use my current location">📍</button>
     </form>
+
+    <!-- Recent searches -->
+    <div id="recent-wrap" class="recent-wrap" hidden>
+      <span class="recent-label">Recent:</span>
+      <div id="recent-list" class="recent-list"></div>
+      <button type="button" id="clear-recent" class="clear-recent">Clear</button>
+    </div>
 
     <!-- Loading and error messages -->
     <p id="loading" class="status loading" role="status" hidden>Loading weather...</p>
@@ -39,7 +47,7 @@
     <section id="weather-content" class="weather-content" hidden>
 
       <!-- Current weather -->
-      <div class="current-card">
+      <div id="current-card" class="current-card">
         <div class="current-top">
           <div>
             <h2 id="city-name" class="city-name"></h2>
@@ -66,8 +74,24 @@
             <span class="detail-label">Wind</span>
             <span id="wind-speed" class="detail-value">--</span>
           </div>
+          <div class="detail">
+            <span class="detail-label">Pressure</span>
+            <span id="pressure" class="detail-value">--</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Sunrise</span>
+            <span id="sunrise" class="detail-value">--</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Sunset</span>
+            <span id="sunset" class="detail-value">--</span>
+          </div>
         </div>
       </div>
+
+      <!-- Next 24 hours -->
+      <h3 class="section-title">Next 24 Hours</h3>
+      <ul id="hourly-list" class="hourly-list"></ul>
 
       <!-- 5-day forecast -->
       <h3 class="section-title">5-Day Forecast</h3>
